@@ -166,33 +166,43 @@
 </footer>
 
 <script>
-const apiKey = "YOUR_API_KEY";
+const apiKey = "AIzaSyDBGfAmuR4VgLzcKK4HbnO9Gy_AIx5lG8A";
 const channelId = "UC3vOQVeyQAcN3fFOoWYdMsg";
 
 // CHANNEL STATS
 fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`)
 .then(res => res.json())
 .then(data => {
-  const stats = data.items[0].statistics;
 
+  if(!data.items || !data.items.length) return;
+
+  const stats = data.items[0].statistics;
   const subs = Number(stats.subscriberCount).toLocaleString();
   const vids = Number(stats.videoCount).toLocaleString();
   const views = Number(stats.viewCount).toLocaleString();
 
-  // 🔝 TOP LIVE COUNTER
-  if(document.getElementById("liveSubs")) document.getElementById("liveSubs").innerText = subs;
-  if(document.getElementById("liveVideos")) document.getElementById("liveVideos").innerText = vids;
-  if(document.getElementById("liveViews")) document.getElementById("liveViews").innerText = views;
+  // TOP STATS
+  const liveSubs = document.getElementById("liveSubs");
+  const liveVideos = document.getElementById("liveVideos");
+  const liveViews = document.getElementById("liveViews");
 
-  // 👇 ABOUT US SECTION
-  if(document.getElementById("subCount")) document.getElementById("subCount").innerText = subs;
-  if(document.getElementById("videoCount")) document.getElementById("videoCount").innerText = vids;
-  if(document.getElementById("viewCount")) document.getElementById("viewCount").innerText = views;
+  if(liveSubs) liveSubs.innerText = subs;
+  if(liveVideos) liveVideos.innerText = vids;
+  if(liveViews) liveViews.innerText = views;
+
+  // ABOUT US
+  const subCount = document.getElementById("subCount");
+  const videoCount = document.getElementById("videoCount");
+  const viewCount = document.getElementById("viewCount");
+
+  if(subCount) subCount.innerText = subs;
+  if(videoCount) videoCount.innerText = vids;
+  if(viewCount) viewCount.innerText = views;
 })
-.catch(err => console.log(err));
+.catch(err => console.log("Stats Error:", err));
 
 
-// ===== LATEST VIDEOS =====
+// LATEST VIDEOS
 fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=6`)
 .then(res => res.json())
 .then(data => {
@@ -211,12 +221,14 @@ fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${ch
       `;
     }
   });
-});
+})
+.catch(err => console.log("Video Error:", err));
 </script>
 
 
 </body>
 </html>
+
 
 
 
