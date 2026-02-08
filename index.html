@@ -133,10 +133,11 @@
     Hi friends, Welcome to Kalaa Spoorthi Channel ❤️<br>
     Joined Jul 30, 2020<br>
     <span id="subCount">Loading...</span> subscribers<br>
-    1,829 videos<br>
-    2,352,833 views
+    <span id="videoCount">Loading...</span> videos<br>
+    <span id="viewCount">Loading...</span> views
   </p>
 </section>
+
 
 <!-- CONTACT -->
 <section id="contact" class="content contact-box">
@@ -155,11 +156,23 @@
 </section>
 
 <!-- ===== LIVE CHANNEL COUNTER ===== -->
-<section class="stats live-counter">
+<section class="stats">
   <h2>Live Channel Stats</h2>
-  <div><h2 id="liveSubs">Loading...</h2><p>Subscribers</p></div>
-  <div><h2 id="liveVideos">Loading...</h2><p>Videos Uploaded</p></div>
-  <div><h2 id="liveViews">Loading...</h2><p>Total Views</p></div>
+
+  <div>
+    <h2 id="liveSubs">Loading...</h2>
+    <p>Subscribers</p>
+  </div>
+
+  <div>
+    <h2 id="liveVideos">Loading...</h2>
+    <p>Videos Uploaded</p>
+  </div>
+
+  <div>
+    <h2 id="liveViews">Loading...</h2>
+    <p>Total Views</p>
+  </div>
 </section>
 
 <!-- ===== LATEST VIDEOS ===== -->
@@ -173,42 +186,44 @@
 </footer>
 
 <script>
-const apiKey = "YOUR_API_KEY_HERE";
+const apiKey = "YOUR_API_KEY";
 const channelId = "UC3vOQVeyQAcN3fFOoWYdMsg";
 
-/* ===== LIVE COUNTS ===== */
 fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`)
 .then(res => res.json())
 .then(data => {
-  const stats = data.items[0].statistics;
-  document.getElementById("liveSubs").innerText = Number(stats.subscriberCount).toLocaleString();
-  document.getElementById("liveVideos").innerText = Number(stats.videoCount).toLocaleString();
-  document.getElementById("liveViews").innerText = Number(stats.viewCount).toLocaleString();
-});
+    const stats = data.items[0].statistics;
 
-/* ===== LATEST VIDEOS ===== */
-fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=6`)
-.then(res => res.json())
-.then(data => {
-  const container = document.getElementById("videoContainer");
-  data.items.forEach(video => {
-    if(video.id.videoId){
-      const card = `
-        <div class="video-card">
-          <a href="https://www.youtube.com/watch?v=${video.id.videoId}" target="_blank">
-            <img src="${video.snippet.thumbnails.medium.url}" />
-            <p>${video.snippet.title}</p>
-          </a>
-        </div>
-      `;
-      container.innerHTML += card;
-    }
-  });
-});
+    const subs  = Number(stats.subscriberCount).toLocaleString();
+    const vids  = Number(stats.videoCount).toLocaleString();
+    const views = Number(stats.viewCount).toLocaleString();
+
+    // ===== LIVE COUNTER SECTION =====
+    if(document.getElementById("liveSubs"))
+        document.getElementById("liveSubs").innerText = subs;
+
+    if(document.getElementById("liveVideos"))
+        document.getElementById("liveVideos").innerText = vids;
+
+    if(document.getElementById("liveViews"))
+        document.getElementById("liveViews").innerText = views;
+
+    // ===== ABOUT US SECTION =====
+    if(document.getElementById("subCount"))
+        document.getElementById("subCount").innerText = subs;
+
+    if(document.getElementById("videoCount"))
+        document.getElementById("videoCount").innerText = vids;
+
+    if(document.getElementById("viewCount"))
+        document.getElementById("viewCount").innerText = views;
+})
+.catch(err => console.log(err));
 </script>
 
 </body>
 </html>
+
 
 
 
