@@ -192,37 +192,30 @@ const channelId = "UC3vOQVeyQAcN3fFOoWYdMsg";
 fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`)
 .then(res => res.json())
 .then(data => {
-    const stats = data.items[0].statistics;
+  const stats = data.items[0].statistics;
 
-    const subs  = Number(stats.subscriberCount).toLocaleString();
-    const vids  = Number(stats.videoCount).toLocaleString();
-    const views = Number(stats.viewCount).toLocaleString();
+  const subs = Number(stats.subscriberCount).toLocaleString();
+  const vids = Number(stats.videoCount).toLocaleString();
+  const views = Number(stats.viewCount).toLocaleString();
 
-    // ===== LIVE COUNTER SECTION =====
-    if(document.getElementById("liveSubs"))
-        document.getElementById("liveSubs").innerText = subs;
+  // LIVE COUNTER
+  if(document.getElementById("liveSubs"))
+    document.getElementById("liveSubs").innerText = subs;
 
-    if(document.getElementById("liveVideos"))
-        document.getElementById("liveVideos").innerText = vids;
+  if(document.getElementById("liveVideos"))
+    document.getElementById("liveVideos").innerText = vids;
 
-    if(document.getElementById("liveViews"))
-        document.getElementById("liveViews").innerText = views;
+  if(document.getElementById("liveViews"))
+    document.getElementById("liveViews").innerText = views;
 
-    // ===== ABOUT US SECTION =====
-    if(document.getElementById("subCount"))
-        document.getElementById("subCount").innerText = subs;
-
-    if(document.getElementById("videoCount"))
-        document.getElementById("videoCount").innerText = vids;
-
-    if(document.getElementById("viewCount"))
-        document.getElementById("viewCount").innerText = views;
 })
 .catch(err => console.log(err));
 </script>
 
+
 </body>
 </html>
+
 
 
 
