@@ -161,9 +161,9 @@ fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${chann
     const vids = Number(stats.videoCount);
     const views = Number(stats.viewCount);
 
-    document.getElementById("liveSubs").innerText = (subs/1000).toFixed(1) + "K+";
-    document.getElementById("liveVideos").innerText = (vids/1000).toFixed(1) + "K+";
-    document.getElementById("liveViews").innerText = (views/1000000).toFixed(1) + "M+";
+document.getElementById("liveSubs").innerText = subs.toLocaleString();
+document.getElementById("liveVideos").innerText = vids.toLocaleString();
+document.getElementById("liveViews").innerText = views.toLocaleString();
 
     document.getElementById("subCount").innerText = subs.toLocaleString();
   })
@@ -173,6 +173,7 @@ fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${chann
 
 </body>
 </html>
+
 
 
 
