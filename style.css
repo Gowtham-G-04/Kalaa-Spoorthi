@@ -245,3 +245,47 @@ footer {
   margin-top: 8px;
 }
 
+.playlist-section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.playlist-section h2 {
+  margin-bottom: 30px;
+}
+
+.playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.playlist-card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.playlist-card:hover {
+  transform: translateY(-5px);
+}
+
+.playlist-card a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: #ff5757;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.playlist-card a:hover {
+  background: #e63e3e;
+}
+
