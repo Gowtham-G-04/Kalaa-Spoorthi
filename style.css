@@ -181,3 +181,35 @@ footer {
   font-weight: 500;
 }
 
+.live-counter {
+  text-align: center;
+  padding: 50px 20px;
+  background: #fff3f0;
+  border-radius: 15px;
+  margin: 40px 0;
+}
+
+.live-counter h2 {
+  margin-bottom: 30px;
+}
+
+.counter-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.counter-card {
+  background: white;
+  padding: 25px 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  min-width: 180px;
+}
+
+.counter-card h3 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
