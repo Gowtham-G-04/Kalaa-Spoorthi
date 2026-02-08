@@ -289,3 +289,15 @@ footer {
   background: #e63e3e;
 }
 
+@media (max-width: 768px) {
+  .stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
