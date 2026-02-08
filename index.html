@@ -1,92 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kalaa Spoorthi</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalaa Spoorthi</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header class="top-header">
-<img src="images/logo.jpg" class="logo">
-<h1>Kalaa Spoorthi</h1>
-<p>Art • Culture • Creativity</p>
+<a href="https://www.youtube.com/@KalaaSpoorthi/featured" target="_blank">
+  <img src="images/logo.jpg" alt="Kalaa Spoorthi Logo" class="logo">
+</a>
+
+  <div>
+    <h1>Kalaa Spoorthi</h1>
+    <p>Art • Culture • Creativity</p>
+  </div>
 </header>
 
+
 <nav>
-<a href="#">Home</a>
-<a href="#about">About</a>
-<a href="video.html">Videos</a>
-<a href="#contact">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="#about">About</a>
+  <a href="video.html">Videos</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<section class="hero">
-<h2>Welcome to Kalaa Spoorthi 🌸</h2>
-<p>Celebrating Art, Culture & Creativity</p>
-<a href="video.html" class="btn">Explore Playlists</a>
+<!-- HERO SECTION -->
+<section class="hero-slider">
+  <img src="images/photo1.jpeg" class="slide active">
+  <img src="images/photo2.jpeg" class="slide">
+  <img src="images/photo3.jpeg" class="slide">
 </section>
-
-<section class="stats">
-<div><h2 id="subs">Loading...</h2><p>Subscribers</p></div>
-<div><h2 id="videos">Loading...</h2><p>Videos</p></div>
-<div><h2 id="views">Loading...</h2><p>Total Views</p></div>
-</section>
-
-<section class="latest-videos">
-<h2>Latest Videos</h2>
-<div id="videoContainer" class="video-grid"></div>
-</section>
-
-<section id="about" class="content">
-<h2>About Us</h2>
-<p>Welcome to Kalaa Spoorthi ❤️<br>
-Joined Jul 30, 2020<br>
-<span id="subCount">Loading...</span> subscribers<br>
-<span id="videoCount">Loading...</span> videos<br>
-<span id="viewCount">Loading...</span> views</p>
-</section>
-
-<section id="contact" class="content contact-box">
-<h2>Contact Us</h2>
-<form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" placeholder="Message" required></textarea>
-<button type="submit">Send</button>
-</form>
-</section>
-
-<footer>© 2026 Kalaa Spoorthi</footer>
 
 <script>
-const apiKey="AIzaSyDBGfAmuR4VgLzcKK4HbnO9Gy_AIx5lG8A";
-const channelId="UC3vOQVeyQAcN3fFOoWYdMsg";
+let slides = document.querySelectorAll(".slide");
+let i = 0;
+setInterval(() => {
+  slides[i].classList.remove("active");
+  i = (i + 1) % slides.length;
+  slides[i].classList.add("active");
+}, 3000);
+</script>
 
+<!-- IMAGE SHOWCASE -->
+<section class="showcase">
+  <h2>Creative Moments</h2>
+  <div class="image-grid">
+  <a href="https://www.youtube.com/watch?v=gSR9NtZpshg" target="_blank">
+    <img src="images/photo1.jpeg" alt="Creative video 1">
+  </a>
+
+  <a href="https://www.youtube.com/watch?v=PB3LrBNSbr4" target="_blank">
+    <img src="images/photo2.jpeg" alt="Creative video 2">
+  </a>
+
+  <a href="https://www.youtube.com/watch?v=iJTP1kCOs54" target="_blank">
+    <img src="images/photo3.jpeg" alt="Creative video 3">
+  </a>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <h2>What You’ll Discover</h2>
+  <div class="feature-grid">
+
+    <a href="https://www.youtube.com/watch?v=B2MaIS9vDyc&list=PLSitttLaPSbZ9cId7gNUPbgzTcJ1MzjYU&pp=0gcJCbUEOCosWNin"
+       target="_blank" style="text-decoration:none; color:inherit;">
+      <div class="feature-card">
+        <h3>🍲 Traditional Recipes</h3>
+        <p>Authentic home-style cooking with easy steps.</p>
+      </div>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=dXlfZt8Iko4&list=PLSitttLaPSbbRov4t8-hcQIrZpmS3Zrsi"
+       target="_blank" style="text-decoration:none; color:inherit;">
+      <div class="feature-card">
+        <h3>🎨 Arts & Crafts</h3>
+        <p>Creative DIY, decorations, and handmade art.</p>
+      </div>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=CI9UddTF9VI&list=PLSitttLaPSbYeVlA3nb2dWi6tYZP8Hlrw"
+       target="_blank" style="text-decoration:none; color:inherit;">
+      <div class="feature-card">
+        <h3>🌸 Festive Specials</h3>
+        <p>Celebrate festivals with beautiful traditions.</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- QUOTE -->
+<section class="quote">
+  <p>"Art is not what you see, but what you make others see."</p>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div>
+    <h2 id="liveSubs">Loading...</h2>
+    <p>Subscribers</p>
+  </div>
+
+  <div>
+    <h2 id="liveVideos">Loading...</h2>
+    <p>Videos Uploaded</p>
+  </div>
+
+  <div>
+    <h2 id="liveViews">Loading...</h2>
+    <p>Total Views</p>
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="cta">
+  <h2>Join Our Creative Journey</h2>
+  <p>Watch, learn, and celebrate culture with us.</p>
+  <a href="video.html" class="btn">Explore Playlists</a>
+</section>
+
+<section class="yt-channel">
+  <h2>Watch Us on YouTube</h2>
+  <p>Explore all our creative content on our official channel.</p>
+  <a href="https://www.youtube.com/@kalaaspoorthi" target="_blank" class="btn">
+    ▶ Visit YouTube Channel
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="content">
+  <h2>About Us</h2>
+  <p>
+    Hi friends, Welcome to Kalaa Spoorthi Channel ❤️<br>
+    Joined Jul 30, 2020<br>
+    <span id="subCount">Loading...</span> subscribers<br>
+    <span id="videoCount">Loading...</span> videos<br>
+    <span id="viewCount">Loading...</span> views
+  </p>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="content contact-box">
+  <h2>Follow Us</h2>
+  <p>Quora: <a href="https://rupagarre.quora.com" target="_blank">rupagarre.quora.com</a></p>
+  <p>Instagram: <a href="https://www.instagram.com/kalaaspoorthi" target="_blank">@kalaaspoorthi</a></p>
+</section>
+
+<!-- ===== BRAND STORY ===== -->
+<section class="brand-story">
+  <h2>Our Story</h2>
+  <p>
+    Kalaa Spoorthi was created with love for culture, creativity, and home traditions.
+    From authentic recipes to arts, crafts, and festive inspirations — every video spreads joy and learning.
+  </p>
+</section>
+
+<!-- ===== LATEST VIDEOS ===== -->
+<section class="latest-videos">
+  <h2>Latest Videos</h2>
+  <div id="videoContainer" class="video-grid"></div>
+</section>
+  
+<footer>
+  <p>© 2026 Kalaa Spoorthi | Made with pride</p>
+</footer>
+
+<script>
+const apiKey = "AIzaSyDBGfAmuR4VgLzcKK4HbnO9Gy_AIx5lG8A";
+const channelId = "UC3vOQVeyQAcN3fFOoWYdMsg";
+
+// CHANNEL STATS
 fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`)
-.then(res=>res.json())
-.then(data=>{
-let s=data.items[0].statistics;
-subs.innerText=Number(s.subscriberCount).toLocaleString();
-videos.innerText=Number(s.videoCount).toLocaleString();
-views.innerText=Number(s.viewCount).toLocaleString();
-subCount.innerText=subs.innerText;
-videoCount.innerText=videos.innerText;
-viewCount.innerText=views.innerText;
-});
+.then(res => res.json())
+.then(data => {
 
+  if(!data.items || !data.items.length) return;
+
+  const stats = data.items[0].statistics;
+  const subs = Number(stats.subscriberCount).toLocaleString();
+  const vids = Number(stats.videoCount).toLocaleString();
+  const views = Number(stats.viewCount).toLocaleString();
+
+  // TOP STATS
+  const liveSubs = document.getElementById("liveSubs");
+  const liveVideos = document.getElementById("liveVideos");
+  const liveViews = document.getElementById("liveViews");
+
+  if(liveSubs) liveSubs.innerText = subs;
+  if(liveVideos) liveVideos.innerText = vids;
+  if(liveViews) liveViews.innerText = views;
+
+  // ABOUT US
+  const subCount = document.getElementById("subCount");
+  const videoCount = document.getElementById("videoCount");
+  const viewCount = document.getElementById("viewCount");
+
+  if(subCount) subCount.innerText = subs;
+  if(videoCount) videoCount.innerText = vids;
+  if(viewCount) viewCount.innerText = views;
+})
+.catch(err => console.log("Stats Error:", err));
+
+
+// LATEST VIDEOS
 fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=6`)
-.then(res=>res.json())
-.then(data=>{
-data.items.forEach(v=>{
-if(v.id.videoId){
-videoContainer.innerHTML+=`
-<div class="video-card">
-<a href="https://www.youtube.com/watch?v=${v.id.videoId}" target="_blank">
-<img src="${v.snippet.thumbnails.medium.url}">
-<p>${v.snippet.title}</p>
-</a>
-</div>`}})});
+.then(res => res.json())
+.then(data => {
+  const container = document.getElementById("videoContainer");
+  if(!container) return;
+
+  data.items.forEach(item => {
+    if(item.id.videoId){
+      container.innerHTML += `
+        <div class="video-card">
+          <a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank">
+            <img src="${item.snippet.thumbnails.medium.url}" />
+            <p>${item.snippet.title}</p>
+          </a>
+        </div>
+      `;
+    }
+  });
+})
+.catch(err => console.log("Video Error:", err));
+</script>
+
+<!-- 🌙 DARK MODE BUTTON -->
+<button id="darkToggle" class="dark-btn">🌙</button>
+
+<!-- 🎥 VIDEO POPUP MODAL -->
+<div id="videoModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal">&times;</span>
+    <iframe id="modalVideo" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<!-- 📩 CONTACT FORM -->
+<section class="contact-form">
+  <h2>Contact Us</h2>
+  <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<script>
+// 🌙 DARK MODE
+document.getElementById("darkToggle").onclick = () => {
+  document.body.classList.toggle("dark-mode");
+};
+
+// 🎥 VIDEO MODAL
+const modal = document.getElementById("videoModal");
+const iframe = document.getElementById("modalVideo");
+document.getElementById("closeModal").onclick = () => {
+  modal.style.display = "none";
+  iframe.src = "";
+};
+function openVideo(videoId){
+  modal.style.display = "block";
+  iframe.src = "https://www.youtube.com/embed/" + videoId;
+}
+
+// 🔢 ANIMATED COUNTER
+function animateValue(id, start, end, duration) {
+  let range = end - start;
+  let current = start;
+  let stepTime = Math.abs(Math.floor(duration / range));
+  let obj = document.getElementById(id);
+  let timer = setInterval(() => {
+    current += 1;
+    obj.textContent = current.toLocaleString();
+    if (current >= end) clearInterval(timer);
+  }, stepTime);
+}
 </script>
 
 </body>
