@@ -1,121 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Kalaa Spoorthi</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalaa Spoorthi</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header class="top-header">
-  <img src="images/logo.jpg" class="logo">
-  <div>
-    <h1>Kalaa Spoorthi</h1>
-    <p>Art • Culture • Creativity</p>
-  </div>
+<img src="images/logo.jpg" class="logo">
+<h1>Kalaa Spoorthi</h1>
+<p>Art • Culture • Creativity</p>
 </header>
 
 <nav>
-  <a href="#">Home</a>
-  <a href="#about">About</a>
-  <a href="video.html">Videos</a>
-  <a href="#contact">Contact</a>
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="video.html">Videos</a>
+<a href="#contact">Contact</a>
 </nav>
 
 <section class="hero">
-  <h2>Welcome to Kalaa Spoorthi 🌸</h2>
-  <p>Celebrating Art, Culture, Traditions & Creativity</p>
-  <a href="video.html" class="btn">Explore Playlists</a>
+<h2>Welcome to Kalaa Spoorthi 🌸</h2>
+<p>Celebrating Art, Culture & Creativity</p>
+<a href="video.html" class="btn">Explore Playlists</a>
 </section>
 
 <section class="stats">
-  <div>
-    <h2 id="liveSubs">Loading...</h2>
-    <p>Subscribers</p>
-  </div>
-  <div>
-    <h2 id="liveVideos">Loading...</h2>
-    <p>Videos Uploaded</p>
-  </div>
-  <div>
-    <h2 id="liveViews">Loading...</h2>
-    <p>Total Views</p>
-  </div>
+<div><h2 id="subs">Loading...</h2><p>Subscribers</p></div>
+<div><h2 id="videos">Loading...</h2><p>Videos</p></div>
+<div><h2 id="views">Loading...</h2><p>Total Views</p></div>
 </section>
 
 <section class="latest-videos">
-  <h2>Latest Videos</h2>
-  <div id="videoContainer" class="video-grid"></div>
+<h2>Latest Videos</h2>
+<div id="videoContainer" class="video-grid"></div>
 </section>
 
 <section id="about" class="content">
-  <h2>About Us</h2>
-  <p>
-    Hi friends, Welcome to Kalaa Spoorthi ❤️<br>
-    Joined Jul 30, 2020<br>
-    <span id="subCount">Loading...</span> subscribers<br>
-    <span id="videoCount">Loading...</span> videos<br>
-    <span id="viewCount">Loading...</span> views
-  </p>
+<h2>About Us</h2>
+<p>Welcome to Kalaa Spoorthi ❤️<br>
+Joined Jul 30, 2020<br>
+<span id="subCount">Loading...</span> subscribers<br>
+<span id="videoCount">Loading...</span> videos<br>
+<span id="viewCount">Loading...</span> views</p>
 </section>
 
-<section id="contact" class="contact-box">
-  <h2>Contact Us</h2>
-  <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="thankyou.html">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Message" required></textarea>
-    <button type="submit">Send</button>
-  </form>
+<section id="contact" class="content contact-box">
+<h2>Contact Us</h2>
+<form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" placeholder="Message" required></textarea>
+<button type="submit">Send</button>
+</form>
 </section>
 
-<footer>
-  <p>© 2026 Kalaa Spoorthi</p>
-</footer>
+<footer>© 2026 Kalaa Spoorthi</footer>
 
 <script>
-const apiKey = "AIzaSyDBGfAmuR4VgLzcKK4HbnO9Gy_AIx5lG8A";
-const channelId = "UC3vOQVeyQAcN3fFOoWYdMsg";
+const apiKey="AIzaSyDBGfAmuR4VgLzcKK4HbnO9Gy_AIx5lG8A";
+const channelId="UC3vOQVeyQAcN3fFOoWYdMsg";
 
-/* CHANNEL STATS */
 fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`)
-.then(res => res.json())
-.then(data => {
-  const stats = data.items[0].statistics;
-  const subs = Number(stats.subscriberCount).toLocaleString();
-  const vids = Number(stats.videoCount).toLocaleString();
-  const views = Number(stats.viewCount).toLocaleString();
-
-  liveSubs.innerText = subs;
-  liveVideos.innerText = vids;
-  liveViews.innerText = views;
-
-  subCount.innerText = subs;
-  videoCount.innerText = vids;
-  viewCount.innerText = views;
+.then(res=>res.json())
+.then(data=>{
+let s=data.items[0].statistics;
+subs.innerText=Number(s.subscriberCount).toLocaleString();
+videos.innerText=Number(s.videoCount).toLocaleString();
+views.innerText=Number(s.viewCount).toLocaleString();
+subCount.innerText=subs.innerText;
+videoCount.innerText=videos.innerText;
+viewCount.innerText=views.innerText;
 });
 
-/* LATEST VIDEOS */
 fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=6`)
-.then(res => res.json())
-.then(data => {
-  const container = document.getElementById("videoContainer");
-  data.items.forEach(item => {
-    if(item.id.videoId){
-      container.innerHTML += `
-        <div class="video-card">
-          <a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank">
-            <img src="${item.snippet.thumbnails.medium.url}">
-            <p>${item.snippet.title}</p>
-          </a>
-        </div>`;
-    }
-  });
-});
+.then(res=>res.json())
+.then(data=>{
+data.items.forEach(v=>{
+if(v.id.videoId){
+videoContainer.innerHTML+=`
+<div class="video-card">
+<a href="https://www.youtube.com/watch?v=${v.id.videoId}" target="_blank">
+<img src="${v.snippet.thumbnails.medium.url}">
+<p>${v.snippet.title}</p>
+</a>
+</div>`}})});
 </script>
 
 </body>
