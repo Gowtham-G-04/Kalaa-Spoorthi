@@ -169,12 +169,11 @@
 const apiKey = "AIzaSyDBGfAmuR4VgLzcKK4HbnO9Gy_AIx5lG8A";
 const channelId = "UC3vOQVeyQAcN3fFOoWYdMsg";
 
-
-// ===== CHANNEL STATS =====
+/* ===== CHANNEL STATS ===== */
 fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`)
 .then(res => res.json())
 .then(data => {
-  if(!data.items) return;
+  if (!data.items || !data.items.length) return;
 
   const stats = data.items[0].statistics;
 
@@ -182,27 +181,28 @@ fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${chann
   const vids = Number(stats.videoCount).toLocaleString();
   const views = Number(stats.viewCount).toLocaleString();
 
-  if(document.getElementById("liveSubs"))
-    document.getElementById("liveSubs").innerText = subs;
+  // ABOUT US SECTION
+  if (document.getElementById("subCount"))
+    document.getElementById("subCount").innerText = subs;
 
-  if(document.getElementById("liveVideos"))
-    document.getElementById("liveVideos").innerText = vids;
+  if (document.getElementById("videoCount"))
+    document.getElementById("videoCount").innerText = vids;
 
-  if(document.getElementById("liveViews"))
-    document.getElementById("liveViews").innerText = views;
+  if (document.getElementById("viewCount"))
+    document.getElementById("viewCount").innerText = views;
 })
 .catch(err => console.log("Stats error:", err));
 
 
-// ===== LATEST VIDEOS =====
+/* ===== LATEST VIDEOS ===== */
 fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=6`)
 .then(res => res.json())
 .then(data => {
   const container = document.getElementById("videoContainer");
-  if(!container || !data.items) return;
+  if (!container) return;
 
   data.items.forEach(item => {
-    if(item.id.videoId){
+    if (item.id.videoId) {
       container.innerHTML += `
         <div class="video-card">
           <a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank">
@@ -218,9 +218,9 @@ fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${ch
 </script>
 
 
-
 </body>
 </html>
+
 
 
 
