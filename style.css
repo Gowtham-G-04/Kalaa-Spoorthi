@@ -213,3 +213,35 @@ footer {
   margin-bottom: 10px;
 }
 
+.brand-story {
+  padding: 40px;
+  margin: 30px;
+  background: #fef3e2;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.live-counter h2 {
+  margin-bottom: 20px;
+}
+
+.latest-videos {
+  padding: 40px;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.video-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.video-card p {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
