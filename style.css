@@ -1,10 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: #fdfbfb;
   color: #333;
   text-align: center;
+
+  overflow-x: hidden;   /* 🔥 THIS stops side scroll */
 }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 
 .top-header {
   display: flex;
@@ -299,4 +311,5 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
 
