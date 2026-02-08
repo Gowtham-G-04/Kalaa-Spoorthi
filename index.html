@@ -121,11 +121,12 @@
   <p>
     Hi friends, Welcome to Kalaa Spoorthi Channel ❤️<br>
     Joined Jul 30, 2020<br>
-    9.92K subscribers<br>
+    <span id="subCount">Loading...</span> subscribers<br>
     1,829 videos<br>
     2,352,833 views
   </p>
 </section>
+
 
 <!-- CONTACT -->
 <section id="contact" class="content contact-box">
@@ -138,8 +139,21 @@
 <footer>
   <p>© 2026 Kalaa Spoorthi | Made with pride</p>
 </footer>
+<script>
+const apiKey = "AIzaSyDBGfAmuR4VgLzcKK4HbnO9Gy_AIx5lG8A";
+const channelId = "UC3vOQVeyQAcN3fFOoWYdMsg";
+
+fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`)
+  .then(res => res.json())
+  .then(data => {
+    const subs = data.items[0].statistics.subscriberCount;
+    document.getElementById("subCount").innerText = Number(subs).toLocaleString();
+  })
+  .catch(err => console.log(err));
+</script>
 
 </body>
 </html>
+
 
 
