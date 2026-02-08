@@ -1,20 +1,36 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #fdfbfb, #ebedee);
-  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background: #fdfbfb;
   color: #333;
+  text-align: center;
 }
 
-header {
-  background: #b76e79;
+.top-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: linear-gradient(135deg, #b76e79, #ffb6b9);
   color: white;
-  padding: 25px;
+  padding: 20px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 nav {
+  position: sticky;
+  top: 0;
   background: #222;
-  padding: 12px;
+  padding: 15px;
+  z-index: 1000;
 }
 
 nav a {
@@ -22,68 +38,25 @@ nav a {
   margin: 15px;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.3s;
 }
 
-.hero {
-  padding: 60px 20px;
+nav a:hover {
+  color: #ffb6b9;
 }
 
-.content {
-  padding: 40px 20px;
-}
-
-.contact-box {
-  background: white;
-  width: 80%;
-  margin: auto;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  padding: 30px;
-}
-
-iframe {
-  margin: 15px;
-  border-radius: 10px;
-}
-
-footer {
-  background: #111;
-  color: white;
-  padding: 15px;
-  margin-top: 40px;
-}
-.playlist-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.playlist-card {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-.playlist-card a {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 8px 14px;
-  background: #b76e79;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-.hero {
-  background: linear-gradient(135deg, #b76e79, #ffb6b9);
-  color: white;
+section {
   padding: 80px 20px;
 }
 
-.hero-box {
-  max-width: 600px;
-  margin: auto;
+.hero {
+  background: linear-gradient(135deg, #b76e79, #ffb6b9);
+  color: white;
+  padding: 100px 20px;
+}
+
+.hero h2 {
+  font-size: 42px;
 }
 
 .btn {
@@ -95,14 +68,16 @@ footer {
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
+  transition: 0.3s;
 }
 
 .btn:hover {
-  background: #ffe5e9;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .showcase {
-  padding: 60px 20px;
+  background: #fff;
 }
 
 .image-grid {
@@ -116,11 +91,6 @@ footer {
   width: 100%;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-.image-grid img {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -128,32 +98,60 @@ footer {
   transform: scale(1.08);
   box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
-.features { padding: 70px 20px; background: #fff0f3; }
-.feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 25px; }
-.feature-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-.quote { padding: 60px 20px; font-style: italic; font-size: 20px; }
+.features {
+  background: #fff0f3;
+}
 
-.stats { display: flex; justify-content: center; gap: 40px; padding: 60px; background: #fdf6f0; }
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
 
-.cta { background: linear-gradient(135deg, #b76e79, #ffb6b9); color: white; padding: 80px 20px; }
+.feature-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
 
-.top-header {
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.quote {
+  font-style: italic;
+  font-size: 20px;
+}
+
+.stats {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 15px;
-  background: #b76e79;
-  color: white;
-  padding: 20px;
+  gap: 40px;
+  background: #fdf6f0;
 }
 
-.logo {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+.cta {
+  background: linear-gradient(135deg, #b76e79, #ffb6b9);
+  color: white;
 }
-.yt-channel {
-  padding: 70px 20px;
-  background: #fff;
+
+.contact-box {
+  background: white;
+  width: 80%;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 30px;
+}
+
+footer {
+  background: #111;
+  color: white;
+  padding: 15px;
+  margin-top: 40px;
 }
