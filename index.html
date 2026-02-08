@@ -171,31 +171,45 @@
 <footer>
   <p>© 2026 Kalaa Spoorthi | Made with pride</p>
 </footer>
+
 <script>
-const apiKey = "AIzaSyDBGfAmuR4VgLzcKK4HbnO9Gy_AIx5lG8A";
+const apiKey = "YOUR_API_KEY_HERE";
 const channelId = "UC3vOQVeyQAcN3fFOoWYdMsg";
 
+/* ===== LIVE COUNTS ===== */
 fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`)
-  .then(res => res.json())
-  .then(data => {
-    const stats = data.items[0].statistics;
+.then(res => res.json())
+.then(data => {
+  const stats = data.items[0].statistics;
+  document.getElementById("liveSubs").innerText = Number(stats.subscriberCount).toLocaleString();
+  document.getElementById("liveVideos").innerText = Number(stats.videoCount).toLocaleString();
+  document.getElementById("liveViews").innerText = Number(stats.viewCount).toLocaleString();
+});
 
-    const subs = Number(stats.subscriberCount);
-    const vids = Number(stats.videoCount);
-    const views = Number(stats.viewCount);
-
-document.getElementById("liveSubs").innerText = subs.toLocaleString();
-document.getElementById("liveVideos").innerText = vids.toLocaleString();
-document.getElementById("liveViews").innerText = views.toLocaleString();
-
-    document.getElementById("subCount").innerText = subs.toLocaleString();
-  })
-  .catch(err => console.log(err));
+/* ===== LATEST VIDEOS ===== */
+fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=6`)
+.then(res => res.json())
+.then(data => {
+  const container = document.getElementById("videoContainer");
+  data.items.forEach(video => {
+    if(video.id.videoId){
+      const card = `
+        <div class="video-card">
+          <a href="https://www.youtube.com/watch?v=${video.id.videoId}" target="_blank">
+            <img src="${video.snippet.thumbnails.medium.url}" />
+            <p>${video.snippet.title}</p>
+          </a>
+        </div>
+      `;
+      container.innerHTML += card;
+    }
+  });
+});
 </script>
-
 
 </body>
 </html>
+
 
 
 
