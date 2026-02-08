@@ -168,7 +168,13 @@ setInterval(() => {
   <h2>Latest Videos</h2>
   <div id="videoContainer" class="video-grid"></div>
 </section>
-  
+
+  <!-- VIDEO POPUP MODAL -->
+<div id="videoModal" class="video-modal">
+  <span class="close-modal" onclick="closeVideo()">✖</span>
+  <iframe id="modalVideo" frameborder="0" allowfullscreen></iframe>
+</div>
+
 <footer>
   <p>© 2026 Kalaa Spoorthi | Made with pride</p>
 </footer>
@@ -220,8 +226,7 @@ fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${ch
   data.items.forEach(item => {
     if(item.id.videoId){
       container.innerHTML += `
-        <div class="video-card">
-          <a href="https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank">
+         <div class="video-card" onclick="openVideo('${item.id.videoId}" target="_blank">
             <img src="${item.snippet.thumbnails.medium.url}" />
             <p>${item.snippet.title}</p>
           </a>
@@ -286,9 +291,22 @@ function animateValue(id, start, end, duration) {
   }, stepTime);
 }
 </script>
+<script>
+function openVideo(videoId) {
+  document.getElementById("videoModal").style.display = "flex";
+  document.getElementById("modalVideo").src =
+    `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+}
+
+function closeVideo() {
+  document.getElementById("videoModal").style.display = "none";
+  document.getElementById("modalVideo").src = "";
+}
+</script>
 
 </body>
 </html>
+
 
 
 
