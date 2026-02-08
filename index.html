@@ -29,21 +29,13 @@
 </nav>
 
 <!-- HERO SECTION -->
-<section class="hero-slider">
-  <img src="images/photo1.jpeg" class="slide active">
-  <img src="images/photo2.jpeg" class="slide">
-  <img src="images/photo3.jpeg" class="slide">
+<section class="hero">
+  <div class="hero-box">
+    <h2>Welcome to Kalaa Spoorthi 🌸</h2>
+    <p>Celebrating Art, Culture, Traditions & Creativity</p>
+    <a href="video.html" class="btn">🎬 Explore Playlists</a>
+  </div>
 </section>
-
-<script>
-let slides = document.querySelectorAll(".slide");
-let i = 0;
-setInterval(() => {
-  slides[i].classList.remove("active");
-  i = (i + 1) % slides.length;
-  slides[i].classList.add("active");
-}, 3000);
-</script>
 
 <!-- IMAGE SHOWCASE -->
 <section class="showcase">
@@ -233,59 +225,7 @@ fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${ch
 .catch(err => console.log("Video Error:", err));
 </script>
 
-<!-- 🌙 DARK MODE BUTTON -->
-<button id="darkToggle" class="dark-btn">🌙</button>
-
-<!-- 🎥 VIDEO POPUP MODAL -->
-<div id="videoModal" class="modal">
-  <div class="modal-content">
-    <span id="closeModal">&times;</span>
-    <iframe id="modalVideo" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-
-<!-- 📩 CONTACT FORM -->
-<section class="contact-form">
-  <h2>Contact Us</h2>
-  <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
-
-<script>
-// 🌙 DARK MODE
-document.getElementById("darkToggle").onclick = () => {
-  document.body.classList.toggle("dark-mode");
-};
-
-// 🎥 VIDEO MODAL
-const modal = document.getElementById("videoModal");
-const iframe = document.getElementById("modalVideo");
-document.getElementById("closeModal").onclick = () => {
-  modal.style.display = "none";
-  iframe.src = "";
-};
-function openVideo(videoId){
-  modal.style.display = "block";
-  iframe.src = "https://www.youtube.com/embed/" + videoId;
-}
-
-// 🔢 ANIMATED COUNTER
-function animateValue(id, start, end, duration) {
-  let range = end - start;
-  let current = start;
-  let stepTime = Math.abs(Math.floor(duration / range));
-  let obj = document.getElementById(id);
-  let timer = setInterval(() => {
-    current += 1;
-    obj.textContent = current.toLocaleString();
-    if (current >= end) clearInterval(timer);
-  }, stepTime);
-}
-</script>
 
 </body>
 </html>
+
