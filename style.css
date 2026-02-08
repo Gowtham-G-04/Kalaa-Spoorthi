@@ -155,3 +155,29 @@ footer {
   padding: 15px;
   margin-top: 40px;
 }
+/* Section separation */
+section {
+  border-radius: 14px;
+  margin: 40px auto;
+  width: 90%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+/* Headings style */
+h2 {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Footer improvement */
+footer {
+  background: linear-gradient(135deg, #b76e79, #ffb6b9);
+  color: white;
+  font-weight: 500;
+}
+
