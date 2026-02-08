@@ -226,10 +226,12 @@ footer {
 }
 
 .brand-story {
-  padding: 40px;
-  margin: 30px;
   background: #fef3e2;
   border-radius: 20px;
+  padding: 30px 20px;   /* safe side padding */
+  margin: 30px auto;    /* center without overflow */
+  width: 90%;           /* keeps inside screen */
+  max-width: 800px;
   text-align: center;
 }
 
@@ -310,6 +312,10 @@ footer {
   .video-grid {
     grid-template-columns: 1fr;
   }
+}
+
+html, body {
+  overflow-x: hidden;
 }
 
 
